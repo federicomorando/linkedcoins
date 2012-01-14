@@ -1,0 +1,63 @@
+Rdf
+
+@prefix batlas: <http://atlantides.org/batlas/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gml: <http://www.opengis.net/gml/> .
+@prefix nm: <http://nomisma.org/id/> .
+@prefix ov: <http://open.vocab.org/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2008/05/skos#> .
+@prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lc: <http://www.linkedcoins.org/schema#>
+
+<http://www.linkedcoins.org/schema#> cc:attributionName "http://www.linkedcoins.org"@en ;
+     cc:attributionURL <http://www.linkedcoins.org> ;
+     dc:title "LinkedCoins.org"@en ;
+     xhv:license <http://creativecommons.org/licenses/by-sa/3.0/> . 
+
+nm:augustus a nm:authority, nm:romanemperor, skos:Concept ;
+     skos:prefLabel "Augustus"@en ;
+     skos:related <http://en.wikipedia.org/wiki/Augustus> . 
+
+
+
+@prefix cidoc: 
+
+http://www.cidoc-crm.org/rdfs/cidoc-crm
+http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label
+
+
+
+
+lc:coin rdfs:subClassOf cidoc:ManMade... .
+GivenCoin a lc:coin
+lc:hasReference
+    rdf:domain lc:coin;
+    rdf:range lc:Reference;
+    rdfs:subPropertyOf  rdf:type .
+lc:Reference a rdf:Class
+lc:CohenAugustusXY a Reference .
+GivenCoin lc:hasReference lc:CohenAugustusXY .
+
+GivenCoin    lc:isVariantOf   lc:CohenAugustusXY .
+lc:isVariantOf   rdfs:isInverseOf   lc:hasVariant .
+
+lc:CohenAugustusXY rdfs:subClassOf lc:AugustusKG .
+lc:RICAugustusXY rdfs:subClassOf lc:AugustusKG .
+lc:CohenAugustusXY rdfs:seeAlso lc:RICAugustusXY .
+
+lc:hasReference rdfs:domain lc:IdentifiedCoin
+
+
+
+
+
+
+
+

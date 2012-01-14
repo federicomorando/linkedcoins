@@ -1,0 +1,119 @@
+
+
+
+ids.linkedcoins.org/ identifying things and concepts
+data.linkedcoins.org/ serving RDF triples
+pages.linkedcoins.org/ serving HTML pages
+
+
+
+ids.linkedcoins.org/roman/republic/Babelon/[$GENS]-[#]
+ids.linkedcoins.org/roman/republic/[$GENS]-[#*100]
+
+<ids.linkedcoins.org/roman/republic/Babelon/Roscia>
+	originaires_de <http://dbpedia.org/resource/Lanuvium>
+	a <http://dbpedia.org/resource/Gens>.
+
+<ids.linkedcoins.org/roman/republic/Babelon/Roscia/L._Roscius>
+	membro_della <ids.linkedcoins.org/roman/republic/babelon/Roscia>
+	a <http://dbpedia.org/resource/Moneyer>
+	Monétaire vers 646
+	Monétaire vers 108 av. J.-C.
+
+<ids.linkedcoins.org/roman/republic/Babelon/Roscia/L._Roscius/1>
+	<ids.linkedcoins.org/vocab/obverse> "Tête de la déesse Rome, à droite, coiffée du casque ailé; der­rière *"
+	<ids.linkedcoins.org/vocab/obverse> Q. M A R . C . F. L. R. R O M A . (Quintus Marcius; Caius F a ­
+bius) Lucius Roscius) Roma). La Victoire tenant une couronne,
+debout dans un quadrige au galop à droite.
+Denier. — 1 fr. (Fabia, 12 ; Marcia, 16).
+
+
+<ids.linkedcoins.org/roman/republic/Babelon/Roscia/L._Roscius/2>
+
+	<ids.linkedcoins.org/vocab/obverse> "Tête de la déesse Rome, à droite, coiffée du casque ailé; derrière, *"
+	C.F.L.R.Q.M.ROMA . ("Caius Fabius? Lucius Roscius? Quintus Marcius. Roma";
+
+<ids.linkedcoins.org/vocab/reverse> La Victoire tenant une couronne, de­bout dans un quadrige au galop à droite.
+
+Denier. — 5 fr. (Fabia, 13 ; Marcia, 17).
+
+
+
+
+
+<ids.linkedcoins.org/roman/republic/babelon/Roscia-L._Roscius_Fabatus>
+Monétaire vers 690 (64 av. J.-C .).
+Lieutenant de César dans les Gaules en 700 (54av. J.-C .), L. Ros­
+cius Fabatus 1 fut chargé de combattre les Germains sur le Rhin, et
+d’étoufTer, dans le nord de la Gaule, l’insurrection d’Ambiorix qui avait
+poussé à la révolte les Eburons et les Nerviens. Fabatus fut préteur
+en 705 (49 av. J.-C .)* et envoyé, en cette qualité, par Pompée à César
+qui se trouvait alors à Ariminum. Les négociations n’aboutirent pas.
+Il fut tué le 14 ou 15 avril 7 11 (43 av. J.-C .), au commencement de
+la bataille livrée à Modène par Marc Antoine à l’armée des meur­
+triers de César.
+1 Caes. Bell, gall,, V, 24 et Sh
+* Caes. Bell, c h ., I, 1, 8, 10; Cic. A d A tt., V III, 12, 2 ; Dio C iss., X L I. 5.
+26
+402
+MONNAIES DE LA RÉPU BLIQ UE ROMAINE.
+L. Roscius Fabatus fut officier monétaire vers 690 (64 av. J.- C .) .
+Le droit de son denier, représentant la tète de Junon Caprotina,
+rappelle que la f amille Roscia était or igin aire de Lanuvium où cette
+divinité avait, comme nous l'avons dit ailleurs, son plus ancien et son
+principal sanctuaire. Le revers, où l’on voit une jeune fille nourrissant
+un dragon, fait allusion à une particularité du culte de Junon Lanu-
+vienne et à une épreuve s ingulière imposée aux jeunes filles de la ville.
+C ette épreuve est mentionnée par Aelien 1 et voici ce qu’en dit P ro ­
+p e rc e 2 : « D e temps immémorial, la ville de Lanuvium est sous la
+garde d'un ant ique dragon, et l’on prend soin de ne pas manquer
+l'instant de la cérémonie annuelle qui consiste à descendre dans sa
+ténébreuse retraite. T u as tout à craindre, jeune vierge chargée d’y
+pénétrer, lorsque le monstre affamé réclame le tribut annuel de sa
+pâture, en sifflant du fond de la caverne. Les jeunes filles dont le
+ministère périlleux est d'y descendre, pâlissent d'effroi en voyant les
+flammes de sa gueule béante. II se saisit avidement de l’offrande, et
+peu s'en faut que la corbeille n’échappe des mains tremblantes des
+jeunes filles. Si elles sont chastes, elles retournent dans les bras pa­
+ternels, et le cultivateur s’écr ie : « Nous aurons une bonne récolte. »
+Les Rom ains se rendaient en foule, tous les ans, à cette étrange céré­
+monie religieuse, et peut-être qu’une jeune vierge de la famille
+Roscia, chargée de porter l’offrande au dragon, donna lieu à un inci­
+dent remarquable dont la médaille rappelle le souvenir.
+i . L. R O S C I. (Lucii Roscii). T ête de Junon Lanu-
+vienne, couverte d’ une peau de chèvre, à droite;
+derrière, un symbole variable.
+R). F A B A T I . Jeune fille debout, tournée à droite et
+donnant à manger à un dragon qui se dresse devant
+elle; dans le champ, un symbole variable.
+Denier dentelé. — 2 fr.
+• H isi. anim.. X I , 10.
+« P ro p ., V , 8, j.
+404
+MONNAIES DE LA RÉPUBLIQUE ROMAINE.
+Variétés. Nous donnons dans le tableau ci-dessus la figure des sym­
+boles que nous avons relevés au droit et au revers de ce denier. Nous
+ferons remarquer que ces symboles sont disposés comme ceux qu'on
+voit sur le denier de L. Papius, c'est-à-dire que le symbole du droit
+a une relation directe avec celui du revers. Ainsi, à une tête de Pan
+correspond un pedum : à une tête de cheval, une tête d’âne ; à une
+corne d’abondance, un gouvernail, etc^ C e denier, comme la plupart
+des deniers dentelés, est souvent fourré.
+
+
+
+
+
+sameAs
+Crawford 412/1; Syd 915
+Sydenham 915
+Kestner 3394 var. (control marks)
+BMCRR Rome 3394 var. (same)
+Roscia 3
+
+
+
+
+
+
+
