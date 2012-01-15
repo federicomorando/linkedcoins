@@ -57,6 +57,79 @@ lc:hasReference rdfs:domain lc:IdentifiedCoin
 
 
 
+lc:hasReference rdf:comment "Usare per inferenze del tipo: se non è indicata una caratteristica, importarla da qui, come inferredHasObverse, etc."
+
+
+
+
+
+
+
+
+
+lc:hasCohenReference
+    rdf:domain lc:coin;
+    rdf:range lc:CohenReference;
+    rdfs:subPropertyOf  lc:hasReference;
+    a owl:FunctionalProperty  .
+lc:CohenReference a lc:Reference
+
+
+lc:hasCollectionReference
+    rdf:domain lc:coin;
+    rdf:comment "non so se definire range lc:CollectionReference perchè qui anche un literal potrebbe starci..";
+    a owl:InverseFunctionalProperty .
+
+
+rdfs:seeAlso malefica pagina database specification...
+
+
+
+lc:hasBabelonNote rdfs:subPropertyOf skos:historyNote
+
+
+
+
+WkgOnto p. 205... copy OGP approach to embedding info...
+20-25 classes and properties
+
+
+
+CohenReference skos:broader RomanCoin
+RomanCoin skos:broader ClassicalCoin
+ClassicalCoin skos:broader Coin
+
+lc:RIC-IV-Gordian_III-19 skos:closeMatch lc:Cohen-Gordian_III-199
+Come sopra se non verificato...
+ anche exactMatch per i casi in cui la ralazione è 1:1
+
+Se ci sono varie monete in RIC per quel Cohen, allora
+RIC: skos:closeMatch Cohen:
+
+
+hasInferredObverse subPropertyOf hasObverse
+
+CONSTRUCT {?MonetaLC  hasInferredObverse ?Obverse}
+WHERE 
+?MonetaLC non ha già un hasObverse proprio
+?MonetaLC hasReference qualcosa, una o più...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
