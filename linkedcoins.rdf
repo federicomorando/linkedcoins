@@ -1,5 +1,3 @@
-Rdf
-
 @prefix batlas: <http://atlantides.org/batlas/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -34,12 +32,11 @@ http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label
 
 
 
-
-lc:coin rdfs:subClassOf cidoc:ManMade... .
-GivenCoin a lc:coin
+lc:coin rdfs:subClassOf cidoc:E22.Man-Made_Object .
+GivenCoin a lc:coin .
 lc:hasReference
-    rdf:domain lc:coin;
-    rdf:range lc:Reference;
+    rdfs:domain lc:coin;
+    rdfs:range lc:Reference;
     rdfs:subPropertyOf  rdf:type .
 lc:Reference a rdf:Class
 lc:CohenAugustusXY a Reference .
@@ -55,29 +52,22 @@ lc:CohenAugustusXY rdfs:seeAlso lc:RICAugustusXY .
 lc:hasReference rdfs:domain lc:IdentifiedCoin
 
 
-
-
 lc:hasReference rdf:comment "Usare per inferenze del tipo: se non è indicata una caratteristica, importarla da qui, come inferredHasObverse, etc."
 
 
 
 
-
-
-
-
-
 lc:hasCohenReference
-    rdf:domain lc:coin;
-    rdf:range lc:CohenReference;
+    rdfs:domain lc:coin;
+    rdfs:range lc:CohenReference;
     rdfs:subPropertyOf  lc:hasReference;
     a owl:FunctionalProperty  .
 lc:CohenReference a lc:Reference
 
 
 lc:hasCollectionReference
-    rdf:domain lc:coin;
-    rdf:comment "non so se definire range lc:CollectionReference perchè qui anche un literal potrebbe starci..";
+    rdfs:domain lc:coin;
+    rdfs:comment "non so se definire range lc:CollectionReference perchè qui anche un literal potrebbe starci..";
     a owl:InverseFunctionalProperty .
 
 
@@ -86,8 +76,6 @@ rdfs:seeAlso malefica pagina database specification...
 
 
 lc:hasBabelonNote rdfs:subPropertyOf skos:historyNote
-
-
 
 
 WkgOnto p. 205... copy OGP approach to embedding info...
@@ -115,9 +103,114 @@ WHERE
 ?MonetaLC hasReference qualcosa, una o più...
 
 
+lc:depicts a rdf:Property
+    rdfs:domain lc:Coin;
+    rdfs:range lc:DepictedOnCoin;
+    rdfs:subPropertyOf  lc:hasReference;
+    a owl:FunctionalProperty  .
+lc:depictsOnObverse rdf:subPropertyOf lc:depicts
+lc:depictsOnReverse rdf:subPropertyOf lc:depicts
 
 
 
+
+
+cidoc:E54.Dimension
+
+
+lc:Denomination rdfs:subClassOf cidoc:E41.Appellation .
+
+lc:Material owl:equivalentClass cidoc:E57.Material .
+
+lc:Collection rdfs:subClassOf cidoc:E78.Collection .
+
+lc:Condition owl:equivalentClass cidoc:E3.Condition_State .
+
+
+hasEarlierDate
+hasLaterDate
+seeAlso E52.Time-Span
+
+Authority  cidoc:E40.Legal_Body
+
+Mint rdfs:subClassOf cidoc:E53.Place
+
+hasMint rdf:type rdf:Property
+
+Weight
+
+E54.Dimension
+
+owl:allValuesFrom cidoc:E58.Measurement_Unit
+
+
+hasThickness
+
+
+Diameter rdfs:subClassOf cidoc:E54.Dimension
+
+
+lc:Legend rdfs:subClassOf cidoc:E34.Inscription
+
+hasLegend rdfs:range lc:Legend
+
+Obverse
+cidoc:E46.Section_Definition
+
+
+foaf:depiction
+
+
+lc:Acquisition owl:equivalentClass cidoc:Acquisition
+
+cidoc:P23.transferred_title_from
+cidoc:P22.transferred_title_to
+
+cidoc:P4.has_time-span
+
+cp:Cataloguing owl:equivalentClass cidoc:E13.Attribute_Assignment
+
+cidoc:P141.assigned
+cp:Catalogue_number owl:equivalentClass cidoc:E42.Identifier
+
+hasCollectionIdentifier
+
+cp:Classification owl:equivalentClass cidoc:E17.Type_Assignment
+cidoc:P42.assigned
+
+
+cidoc:P32.used_general_technique
+
+cidoc:P74.has_current_or_former_residence
+
+lc:Coin skos:exactMatch cp:Coin
+
+cidoc:P46I.forms_part_of
+Collection
+
+cidoc:P43.has_dimension
+cidoc:P128.carries Inscription
+
+cidoc:P58.has_section_definition
+Obverse
+cidoc:P53.has_former_or_current_location
+cidoc:P44.has_condition
+
+lc:VF a Conservation_state
+
+cidoc:P41I.was_classified_by
+
+
+Discovery
+
+E5.Event
+
+P7.took_place_at
+
+
+E53.Place
+
+P2.has_type
 
 
 
