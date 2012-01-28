@@ -12,7 +12,10 @@
 @prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix lc: <http://www.linkedcoins.org/schema#>
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix wikipedia: <http://en.wikipedia.org/wiki/> .
+@prefix lc: <http://www.linkedcoins.org/schema#> .
+
 
 <http://www.linkedcoins.org/schema#> cc:attributionName "http://www.linkedcoins.org"@en ;
      cc:attributionURL <http://www.linkedcoins.org> ;
@@ -95,7 +98,166 @@ Se ci sono varie monete in RIC per quel Cohen, allora
 RIC: skos:closeMatch Cohen:
 
 
-hasInferredObverse subPropertyOf hasObverse
+hasInferredObverse subPropertyOf hasObverse ;
+	rdfs:comment "the property comes from the fact that a coin has a certain reference; it has not been directly described" .
+
+hasObverseLegend subPropertyOf hasObverse
+
+hasObverseType subPropertyOf hasObverse;
+	rdfs:range rdfs:Resource .
+
+hasObverseDescription subPropertyOf hasObverse;
+	rdfs:range rdfs:Literal;
+	rdfs:range rdf:XMLLiteral .
+
+
+
+
+?coin lc:hasObverseType lc:BareHeadL, lc:BareHeadR.
+
+lc:Head
+lc:Bust
+lc:Bare
+lc:...
+
+lc:HeadBareL rdfs:label‎ "bare head left"@en, "tête nue à gauche"@fr, "testa nuda a sinistra"@it .
+lc:HeadBareR rdfs:label "bare head right"@en, "tête nue à droite"@fr, "testa nuda a destra"@it .
+lc:BustBareCuirL rdfs:label‎ "bare-headed, cuirassed bust left"@en, "buste nu et cuirassé à gauche"@fr, "busto corazzato con testa nuda a sinistra"@it .
+lc:BustBareCuirR rdfs:label‎ "bare-headed, cuirassed bust right"@en, "buste nu et cuirassé à droite"@fr, "busto corazzato con testa nuda a destra"@it .
+lc:BustBareDrCuirL rdfs:label‎ "bare-headed, draped and cuirassed bust left"@en, "buste nu, drapé et cuirassé à gauche"@fr, "busto drappeggiato, corazzato con testa nuda a sinistra"@it .
+lc:BustBareDrCuirR rdfs:label‎ "bare-headed, draped and cuirassed bust right"@en, "buste nu, drapé et cuirassé à droite"@fr, "busto drappeggiato, corazzato con testa nuda a destra"@it .
+lc:BustBareDrL rdfs:label‎ "bare-headed, draped bust left"@en, "buste nu et drapé à gauche"@fr, "busto drappeggiato con testa nuda a sinistra"@it .
+lc:BustBareDrR rdfs:label‎ "bare-headed, draped bust right"@en, "buste nu et drapé à droite"@fr, "busto drappeggiato con testa nuda a destra"@it .
+lc:BustDiadDrCuirL rdfs:label‎ "diademed, draped and cuirassed bust left"@en, "busto drappeggiato e corazzato con testa diademata a sinistra"@it .
+lc:BustDiadDrCuirR rdfs:label‎ "diademed, draped and cuirassed bust right"@en, "busto drappeggiato e corazzato con testa diademata a destra"@it .
+lc:BustDiadDrL rdfs:label‎ "diademed, draped bust left"@en, ""@it .
+lc:BustDiadDrR rdfs:label‎ "diademed, draped bust right"@en, ""@it .
+lc:BustDrL rdfs:label‎ "draped bust left"@en, "buste drapé à gauche"@fr, ""@it .
+lc:BustDrR rdfs:label‎ "draped bust right"@en, "buste drapé à droite"@fr, ""@it .
+lc:BustLaurLLion rdfs:label‎ "laureate bust left, wearing lion skin"@en, ""@it .
+lc:BustLaurRLion rdfs:label‎ "laureate bust right, wearing lion skin"@en, ""@it .
+lc:HeadLaurL rdfs:label‎ "laureate head left"@en, "tête laurée à gauche"@fr, ""@it .
+lc:HeadLaurR rdfs:label‎ "laureate head right"@en, "tête laurée à droite"@fr, ""@it .
+lc:BustLaurCuirL rdfs:label‎ "laureate, cuirassed bust left"@en, ""@it .
+lc:BustLaurCuirR rdfs:label‎ "laureate, cuirassed bust right"@en, ""@it .
+lc:BustLaurDrCuirL rdfs:label‎ "laureate, draped and cuirassed bust left"@en, "buste lauré, drapé et cuirassé à gauche"@fr, ""@it .
+lc:BustLaurDrCuirR rdfs:label‎ "laureate, draped and cuirassed bust right"@en, "buste lauré, drapé et cuirassé à droite"@fr, ""@it .
+lc:BustLaurDrL rdfs:label‎ "laureate, draped bust left"@en, "buste lauré, drapé à gauche"@fr, ""@it .
+lc:BustLaurDrR rdfs:label‎ "laureate, draped bust right"@en, "buste lauré, drapé à droite"@fr, ""@it .
+lc:HeadRadL rdfs:label‎ "radiate head left"@en, "tête radiée à gauche"@fr, ""@it .
+lc:HeadRadR rdfs:label‎ "radiate head right"@en, "tête radiée à droite"@fr, ""@it .
+lc:BustRadCuirL rdfs:label‎ "radiate, cuirassed bust left"@en, ""@it .
+lc:BustRadCuirR rdfs:label‎ "radiate, cuirassed bust right"@en, ""@it .
+lc:BustRadDrCuirL rdfs:label‎ "radiate, draped and cuirassed bust left"@en, ""@it .
+lc:BustRadDrCuirR rdfs:label‎ "radiate, draped and cuirassed bust right"@en, ""@it .
+lc:BustRadDrL rdfs:label‎ "radiate, draped bust left"@en, ""@it .
+lc:BustRadDrR rdfs:label‎ "radiate, draped bust right"@en, ""@it .
+
+
+
+Diad "diademed"
+Dr "draped"
+Ex "exergue"
+Hd "head"
+L "left"
+Laur "laureate"
+Quad "quadriga"
+R "right"
+Obv "obverse"
+Rev "reverse"
+
+
+lc:PontMax rdfs:label‎ "PONT. MAX"; lc:hasAbbreviationExpansion "" .
+
+
+lc:hasTransliteration
+
+
+lc: rdfs:label‎ ;
+lc:hasAbbreviationExpansion ;
+lc:hasTranslation ;
+
+
+lc: rdfs:label‎ ;
+lc:hasAbbreviationExpansion ;
+lc:hasTranslation ;
+
+AVG, AVGVSTVS
+Augustus. The title bestowed on the emperor. (Literally: "Revered One")
+http://dbpedia.org/page/Augustus_%28honorific%29
+
+C, CAES, CAESAR
+A generic term for the emperor. Sometimes used to designate the heir-apparent. Under the Tetrarchy, used to designate the junior Emperor.
+dbpedia:Caesar_%28title%29
+
+CENS,
+CENSOR
+A temporary official duty, which allowed the holder to determine the composition of the Roman senate
+
+lc: rdfs:label‎ ;
+lc:hasAbbreviationExpansion ;
+lc:hasTranslation ;
+
+COS, C
+Consul. One of the two chief magistrates. When combined with a number (ie: COS V), it indicates that the emperor received the title for the 5th time.
+http://dbpedia.org/page/Consul
+
+lc:DN rdfs:label‎ "D.N.";
+lc:hasAbbreviationExpansion "Dominus Noster";
+lc:hasTranslation "Our Lord";
+
+DIVI, DIVO
+Divine. Issued posthumously, it declared that the person had been deified.
+
+FIL
+Filius. "Son of..."
+
+IMP
+Imperator. Leader of the army
+http://dbpedia.org/page/Imperator
+
+IVN
+Iuventis. Junior. 
+
+NOB
+Nobilissimus. Noble
+
+OPTIMO
+The highest, or the best
+
+PERP
+Perpetuatae. For life
+
+P F
+Pius Felix. Dutiful and wise
+
+PM, PONT MAX
+Pontifex Maximus. The chief priest
+
+lc:PP rdfs:label‎ "P.P.";
+lc:hasAbbreviationExpansion "Pater Patriae";
+lc:hasTranslation "Father of the Country";
+foaf:page wikipedia:Pater_Patriae;
+ dbpedia:List_of_Imperial_Victory_Titles .
+ dbpedia:Category:Ancient_Roman_titles
+
+
+PRINCIPI
+Princeps. Prince
+
+S C
+Senatus Consultus. "With the agreement of the Senate"
+
+TR P, TR POT
+Tribunicia Potestate. The civil head of state. As with COS, a number following indicates the number of times that the title was bestowed. (ie: TR P IIII = Tribunicia Potestate for the 4th time)
+
+BRIT, DAC, GERM, PART, etc.
+Britianicus, Dacicus, Germanicus, Parthicus. "conqueror of....." (ie: "We beat up on the Germans again")
+
+
+
+
+
 
 CONSTRUCT {?MonetaLC  hasInferredObverse ?Obverse}
 WHERE 
@@ -110,7 +272,6 @@ lc:depicts a rdf:Property
     a owl:FunctionalProperty  .
 lc:depictsOnObverse rdf:subPropertyOf lc:depicts
 lc:depictsOnReverse rdf:subPropertyOf lc:depicts
-
 
 
 
@@ -211,6 +372,20 @@ P7.took_place_at
 E53.Place
 
 P2.has_type
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
