@@ -280,6 +280,15 @@ cidoc:E54.Dimension
 
 
 lc:Denomination rdfs:subClassOf cidoc:E41.Appellation .
+lc:hasDenomination rdfs:range lc:Denomination
+lc:Denarius rdf:type lc:Denomination
+lc:Denarius owl:sameAs dbpedia:Denarius
+lc:Aureus rdf:type lc:Denomination
+lc:Aureus owl:sameAs dbpedia:Aureus
+lc:Sestertius rdf:type lc:Denomination
+lc:Sestertius owl:sameAs dbpedia:Sestertius
+
+
 
 lc:Material owl:equivalentClass cidoc:E57.Material .
 
@@ -381,7 +390,7 @@ P2.has_type
 
 
 
-
+foaf:primaryTopic
 
 
 
