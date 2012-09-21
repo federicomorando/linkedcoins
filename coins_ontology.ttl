@@ -1,0 +1,494 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cidoc: <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.coins-project.eu/coins_ontology.owl#> .
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://www.coins-project.eu/coins_ontology.owl>
+    a owl:Ontology ;
+    rdfs:comment """
+    	This is the official Ontology created for the COINS project modeled on CIDOC-CRM v2.4.2
+	 """^^xsd:string ;
+    rdfs:label """
+	 	COINS Domain Ontology (by Andrea D'Andrea and Achille Felicetti - Version 1.0 of 25.11.2008)
+	"""^^xsd:string ;
+    owl:imports <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl> .
+
+:Acquisition_method
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Area
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Sub_area ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Authority_State
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Maker_state ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P107.has_current_or_former_member>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E40.Legal_Body> .
+
+:Catalogue_number
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier> .
+
+:Cataloguing
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Catalogue_number ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141.assigned>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Inventory ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141.assigned>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Object_number ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141.assigned>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E13.Attribute_Assignment> .
+
+:Classification
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Series ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P42.assigned>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E17.Type_Assignment> .
+
+:Coin
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Cataloguing ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141I.was_assigned_by>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Collection ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P46I.forms_part_of>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Dimension ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P43.has_dimension>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Number ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P90.has_value>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Museum ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P49.has_former_or_current_keeper>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Inscription ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P128.carries>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Obverse ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P58.has_section_definition>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Reverse ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P58.has_section_definition>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Museum_section ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P53.has_former_or_current_location>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Coin_picture ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P65I.is_shown_by>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Conservation_state ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P44.has_condition>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Classification ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P41I.was_classified_by>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Coin_acquisition ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P24I.changed_ownership_through>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Denomination ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P1.is_identified_by>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Coin_material ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E22.Man-Made_Object> .
+
+:Coin_acquisition
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Acquisition_method ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Former_owner ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P23.transferred_title_from>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Museum ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P22.transferred_title_to>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Entry_date ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P4.has_time-span>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E8.Acquisition> .
+
+:Coin_material
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E57.Material> .
+
+:Coin_picture
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Picture_identifier ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P1.is_identified_by>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Picture_type ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E38.Image> .
+
+:Coinage
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Coin ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P108.has_produced>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Technique ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P32.used_general_technique>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Date_early ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P4.has_time-span>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Date_late ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P4.has_time-span>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Authority_State ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P14.carried_out_by>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Mint_place ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P74.has_current_or_former_residence>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Maker ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P11.had_participant>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E12.Production> .
+
+:Collection
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E78.Collection> .
+
+:Conservation_state
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E3.Condition_State> .
+
+:Date_early
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E52.Time-Span> .
+
+:Date_late
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E52.Time-Span> .
+
+:Denomination
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E41.Appellation> .
+
+:Diameter
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Diameter_unit ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension> .
+
+:Diameter_type
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Diameter_unit
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Diameter_type ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit> .
+
+:Dimension
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Dimension_unit ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension> .
+
+:Dimension_unit
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit> .
+
+:Discovery
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Area ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Sub_area ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Trench ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Sondage ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :US ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E5.Event> .
+
+:Entry_date
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E52.Time-Span> .
+
+:Former_owner
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor> .
+
+:Inscription
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Inscription_description ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P3.has_note>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Inscription_language ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P72.has_language>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E34.Inscription> .
+
+:Inscription_description
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E62.String> .
+
+:Inscription_language
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E56.Language> .
+
+:Inscription_position
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Inventory
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier> .
+
+:Maker
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Maker_appellation ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P1.is_identified_by>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor> .
+
+:Maker_appellation
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E41.Appellation> .
+
+:Maker_place
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Maker_state
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor> .
+
+:Mint
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor> .
+
+:Mint_place
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Museum
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Museum_place ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P74.has_current_or_former_residence>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E40.Legal_Body> .
+
+:Museum_place
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Museum_section
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E46.Section_Definition> .
+
+:Number
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E60.Number> .
+
+:Object_number
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier> .
+
+:Obverse
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E46.Section_Definition> .
+
+:Picture_identifier
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier> .
+
+:Picture_type
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Reverse
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E46.Section_Definition> .
+
+:Series
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Sub_series ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P127I.has_narrower_term>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Site
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Area ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of>
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom :Site_type ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Site_type
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Sondage
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :US ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Sub_area
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Trench ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Sub_series
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Sub_sub_series ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P127I.has_narrower_term>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Sub_sub_series
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Technique
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type> .
+
+:Thickness
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Thickness_unit ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension> .
+
+:Thickness_unit
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit> .
+
+:Trench
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Sondage ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:US
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place> .
+
+:Weight
+    a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:allValuesFrom :Weight_unit ;
+        owl:onProperty <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit>
+    ] ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension> .
+
+:Weight_unit
+    a owl:Class ;
+    owl:equivalentClass <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit> .
+

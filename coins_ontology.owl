@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:cidoc="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.coins-project.eu/coins_ontology.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xml:base="http://www.coins-project.eu/coins_ontology.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+	 	COINS Domain Ontology (by Andrea D'Andrea and Achille Felicetti - Version 1.0 of 25.11.2008)
+	</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+    	This is the official Ontology created for the COINS project modeled on CIDOC-CRM v2.4.2
+	 </rdfs:comment>
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="Coinage">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E12.Production"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P108.has_produced"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Coin"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P32.used_general_technique"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Technique"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P4.has_time-span"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Date_early"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P4.has_time-span"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Date_late"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P14.carried_out_by"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Authority_State"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P74.has_current_or_former_residence"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Mint_place"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P11.had_participant"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Maker"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <!-- THE COIN OBJECT -->
+
+  <owl:Class rdf:ID="Coin">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E22.Man-Made_Object"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P1.is_identified_by"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Denomination"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Coin_material"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141I.was_assigned_by"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Cataloguing"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P46I.forms_part_of"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Collection"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P43.has_dimension"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Dimension"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P90.has_value"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Number"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P49.has_former_or_current_keeper"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Museum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P128.carries"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Inscription"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P58.has_section_definition"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Obverse"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P58.has_section_definition"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Reverse"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P53.has_former_or_current_location"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Museum_section"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P65I.is_shown_by"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Coin_picture"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P44.has_condition"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Conservation_state"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P41I.was_classified_by"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Classification"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P24I.changed_ownership_through"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Coin_acquisition"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Denomination"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E41.Appellation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Coin_material"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E57.Material"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Collection"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E78.Collection"/>
+  </owl:Class>
+
+<!-- Commented by Federico Morando, since it looked a duplicated entry... 
+  <owl:Class rdf:ID="Dimension">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+-->
+
+  <owl:Class rdf:ID="Number"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E60.Number"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Museum_section">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E46.Section_Definition"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Conservation_state">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E3.Condition_State"/>
+  </owl:Class>
+  
+  
+
+  <owl:Class rdf:ID="Technique"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Date_early"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E52.Time-Span"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Date_late"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E52.Time-Span"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Authority_State"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E40.Legal_Body"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P107.has_current_or_former_member"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Maker_state"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Mint_place"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Maker_state"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor"/>
+  </owl:Class>
+
+    <owl:Class rdf:ID="Mint"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor"/>
+  </owl:Class>
+
+  
+  <owl:Class rdf:ID="Maker"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P1.is_identified_by"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Maker_appellation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Maker_place">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Maker_appellation">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E41.Appellation"/>
+  </owl:Class>
+
+  <!-- PHYSICAL FEATURES -->
+
+  <owl:Class rdf:ID="Dimension"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Dimension_unit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Dimension_unit">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Weight">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Weight_unit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Weight_unit">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Thickness">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Thickness_unit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Thickness_unit">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Diameter">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E54.Dimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P91.has_unit"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Diameter_unit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Diameter_unit">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E58.Measurement_Unit"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Diameter_type"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Diameter_type">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Inscription">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E34.Inscription"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P3.has_note"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Inscription_description"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P72.has_language"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Inscription_language"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Inscription_description">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E62.String"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Inscription_language">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E56.Language"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Inscription_position">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Obverse">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E46.Section_Definition"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Reverse">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E46.Section_Definition"/>
+  </owl:Class>
+
+
+  <!-- ACQUISITION -->
+
+  <owl:Class rdf:ID="Coin_acquisition">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E8.Acquisition"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Acquisition_method"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P23.transferred_title_from"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Former_owner"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P22.transferred_title_to"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Museum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P4.has_time-span"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Entry_date"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Acquisition_method">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Former_owner">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E39.Actor"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Museum">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E40.Legal_Body"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P74.has_current_or_former_residence"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Museum_place"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Entry_date">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E52.Time-Span"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Museum_place">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+  </owl:Class>
+
+    <!-- CATALOGUING -->
+
+  <owl:Class rdf:ID="Cataloguing">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E13.Attribute_Assignment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141.assigned"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Catalogue_number"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141.assigned"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Inventory"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P141.assigned"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Object_number"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Catalogue_number">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Inventory"> <!-- OK -->
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Object_number">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Classification">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E17.Type_Assignment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P42.assigned"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Series"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Series">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P127I.has_narrower_term"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Sub_series"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Sub_series">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P127I.has_narrower_term"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Sub_sub_series"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Sub_sub_series">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+
+    <!-- DISCOVERY -->
+
+  <owl:Class rdf:ID="Discovery">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E5.Event"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Area"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Sub_area"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Trench"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Sondage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P7.took_place_at"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#US"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Site">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Area"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Site_type"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Area">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Sub_area"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Sub_area">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Trench"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Trench">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Sondage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Sondage">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P45.consists_of"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#US"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="US">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E53.Place"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Site_type">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+  
+  <!-- COIN PICTURE -->
+
+  <owl:Class rdf:ID="Coin_picture">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E38.Image"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P1.is_identified_by"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Picture_identifier"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#P2.has_type"/>
+        <owl:allValuesFrom rdf:resource="http://www.coins-project.eu/coins_ontology.owl#Picture_type"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Picture_identifier">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E42.Identifier"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Picture_type">
+    <owl:equivalentClass rdf:resource="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#E55.Type"/>
+  </owl:Class>
+
+</rdf:RDF>

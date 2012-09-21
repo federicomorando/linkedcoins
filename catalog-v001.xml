@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl" uri="file:/home/federico/Downloads/core_5.0.1"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1345044064396" name="http://www.coins-project.eu/coins_ontology.owl" uri="coins_ontology.owl"/>
+    </group>
+</catalog>

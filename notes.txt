@@ -1,0 +1,81 @@
+URI: 	http://purl.org/dc/terms/description
+Label: 	Description
+Definition: 	An account of the resource.
+Comment: 	Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.
+Type of Term: 	Property
+Refines: 	http://purl.org/dc/elements/1.1/description
+Version: 	http://dublincore.org/usage/terms/history/#descriptionT-001
+
+
+Term Name: publisher
+URI: 	http://purl.org/dc/terms/publisher
+Label: 	Publisher
+Definition: 	An entity responsible for making the resource available.
+Comment: 	Examples of a Publisher include a person, an organization, or a service.
+Type of Term: 	Property
+Refines: 	http://purl.org/dc/elements/1.1/publisher
+Has Range: 	http://purl.org/dc/terms/Agent
+Version: 	http://dublincore.org/usage/terms/history/#publisherT-001
+
+
+OwnRef.; Issuer; Year; Type; StdRef.; ObvDesc; RevDesc; Cons; Rarity; Estimate; Notes
+
+
+
+
+
+
+TODO Reka Devnia:
+check how to deal with sets...
+every resource listed is a set with certain characteristics and cardinality = X, where X is the number of coins in that set (i.e. of a given type... also linked to Cohen or other std Reference)
+
+Example:
+
+lc:RekaDevnia owl:oneOf (lc:rekadevnia);
+lc:Cohen-Gordian_III-245 rdf:type rdfs:Class;
+lc:Cohen-Gordian_III-245 rdfs:subClassOf [a owl:Restriction;
+owl:onProperty lc:isInHoard;
+owl:qualifiedCardinality 50;
+owl:onClass lc:RekaDevnia] .
+# ci siamo quasi ma non proprio, perché RekaDevnia non è una classe...
+
+lc:Hoard skos:exactMatch nm:hoard .
+lc:isInHoard owl:inverseOf nm:item .
+
+nm:findspot .
+lc:hasEarliestDate skos:semanticRelation nm:approximateburialdate .
+lc:hasLatestDate skos:semanticRelation nm:approximateburialdate .
+lc:RekaDevnia a lc:Hoard;
+    lc:hasEarliestDate "-146"^^xsd:date;
+    lc:hasLatestDate "-146"^^xsd:date;
+    nm:findspot "43.216667 27.566667"@en;
+http://pleiades.stoa.org/places/216878
+
+
+# semplice tentativo di dire che ci sono degli insieme di dati (monete in Reka Devnia e monete con una certa classificazione in Choen); questa parte è chiaramnte ridondante, ma potrebbe aiutare la leggibilità del tutto (anche in futuro per mia stessa revisione=...
+lc:RekaDevniaCoin a rdf:class
+lc:RekaDevniaCoin rdfs:subClassOf lc:Coin
+lc:RekaDevnia-pag-num rdfs:subClassOf lc:RekaDevniaCoin
+# in many cases:
+lc:RekaDevnia-pag-num rdfs:subClassOf lc:Cohen-Emperor-num
+# or:
+lc:RekaDevnia-pag-num lc:variantOf lc:Cohen-Emperor-num
+# lc:variantOf is almost equivalent to rdfs:subClassOf but it's more similar to the concept of classes in ojbect-oriented languages... some properties may vary, etc.
+
+# si passa a definire ogni classificazione proprio come un sottoinsieme dei dati di cui sopra
+lc:rd-pag-num owl:equivalentClass
+	[a owl:Class;
+owl:intersectionOf
+(lc:RekaDevniaCoin lc:Cohen-Emperor-num)]
+
+# SBAGLIATO tentativo di definire il numero di monete di ciascun tipo trovate nel teso in termini rigorosi e standard
+lc:Cohen-Emperor-num rdfs:subClassOf [a owl:Restriction;
+owl:onProperty rdf:type;
+owl:qualifiedCardinality 50;
+owl:onClass lc:RekaDevniaCoins] .
+
+
+nomisma.org maintains a list of public databases with numismatic content
+
+
+

@@ -1,0 +1,208 @@
+
+NUDS 
+
+
+lc:hasDenomimation hasNUDSlabel "Denomination" .
+ hasNUDSlabel "Geography" one-to-many relationship
+
+
+Field Names
+lc:hasUniqueID  hasNUDSlabel "UniqueID"
+"a local unique identifier, i.e. an identifier within a given (or the current) collection"
+
+      Collection - Identifier of the collection where the object is currently held
+      CollectionID - Identifier of the object within its collection
+      GovernmentID - An official ID assigned by a governmental entity such as an archaeological service
+      Project - Identifier of the project creating this record
+      ProjectID - Identifier of the object
+      CatalogID - Accomodates the situation where UniqueID is not the identifier that will be used in a publication generated from the database.
+      OtherID(1,2,3) - Generic placeholder for other identifiers.
+      InformationSource
+
+Descriptive
+This section lists fields that describe aspects of the entire object.
+      Title http://purl.org/dc/elements/1.1/title
+      Category
+      ObjectType
+            nm:coin
+            nm:medal
+            nm:seal
+            nm:sealing
+            nm:token
+      Description - Free text holder for undifferentiated description of object
+      Denomination nm:denomination
+      Countermark - used when countermark not assigned to obverse or reverse. nm:countermark
+
+Physical
+      lc:isOfMaterial=nuds:Material=nm:material
+      Manufacture nm:manufacture
+lc:hasWeight hasNUDSLabel "Weight" ;
+	owl:sameAs nm:weight .
+lc:hasDiameter hasNUDSLabel "Diameter" ;
+	owl:sameAs nm:diameter .
+lc:hasMaxDiameter rdfs:subPropertyOf lc:hasDiameter .
+lc:hasMinDiameter
+"if it's just one, you may assume that it's the max. diameter"
+(TODO: check how to deal with this...)
+
+      Height nm:height
+      Width nm:width
+      Thickness nm:thickness
+      OtherDimension(1,2,3…)
+
+      Shape
+lc:hasAxis hasNUDSLabel "Axis" ;
+	same_as nm:axis .
+      nuds:AxisClock
+      nuds:AxisNumber
+
+Geography (currently including Hoard and Findspot Information)
+
+      Geographic(1,2,3…)
+      Region nm:region
+      lc:hasMint hasNUDSLabel "Mint" ;
+nm:mint .
+      fsGeographic(1,2,3…)
+      Findspot
+      fsCoordinates
+       hasNUDSLabel "Hoard" ;
+nm:hoard
+
+Authority and Personal
+
+      State
+      lc:hasAuthority hasNUDSLabel "Authority"
+nm:authority .
+
+      lc:hasIssuer=nuds:Issuer=nm:issuer
+
+lc:Issuer rdfs:subClassOf lc:Authority .
+lc:hasIssuer rdfs:subPropertyOf lc:hasAuthority .
+
+      Artist nm:artist
+      Engraver nm:engraver
+
+Chronology
+
+Use '-' to indicate BC/BCE dates. For example ”-323” for the date 323 BCE.
+
+      "hasDate"
+      lc:hasEarlierDate "fromDate"
+      lc:hasLatestDate "toDate"
+      DateOnObject
+      DateonObjectEra
+
+	rdfs:subPropertyOf lc:hasObverse .
+
+      hasNUDSLabel "ObverseDescription" - Undifferentiated description of obverse
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseLegend"
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseType"
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseSymbol"
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseDieID"
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseDieState"
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseCountermark"
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseArtist"
+	rdfs:subPropertyOf lc:hasObverse .
+      hasNUDSLabel "ObverseEngraver"
+	rdfs:subPropertyOf lc:hasObverse .
+
+Reverse
+
+      ReverseDescription - Undifferentiated description of reverse
+      ReverseLegend
+      RebverseType
+      ReverseSymbol
+      ReverseDieID
+      ReverseDieState
+      ReverseCountermark
+      ReverseArtist
+      ReverseEngraver
+
+Edge
+
+      EdgeDescription
+      EdgeType
+      EdgeLegend
+
+Undertype
+
+The approach to undertype is currently very generic and allows for an unstructured description of the original coin. It is possible, however, to prepend “ut” to any NUDS field and so indicate that it applies to the undertype.
+
+      Undertype
+
+Publication and Reference
+
+lc:hasReferenceResource lc:hasNUDSLabel "AbbreviatedNumismaticReference"
+lc:hasReferenceDescription lc:hasNUDSLabel "Reference"
+lc:wasPublishedIn lc:hasNUDSLabel "Published"
+comment "publication of the very same item..."
+
+
+
+      lc:hasCondition owl:sameAs nuds:Condition .
+      lc:hasWear owl:sameAs nuds:Wear .
+      lc:hasWear rdfs:subPropertyOf lc:hasCondition .
+      lc:hasCompleteness owl:sameAs nuds:Completeness .
+      lc:hasCompleteness rdfs:subPropertyOf lc:hasCondition .
+      lc:hasGrade owl:sameAs nuds:Grade .
+      lc:hasGrade rdfs:subPropertyOf lc:hasCondition .
+
+
+      lc:Image lc:hasNUDSLabel "ImageUrl"
+      lc:ObverseImage lc:hasNUDSLabel "ObverseImageUrl"
+      lc:ReverseImage lc:hasNUDSLabel "ReverseImageUrl"
+
+Provenience
+
+	lc: hasNUDSLabel "PreviousHistory"
+	lc:acquiredDate hasNUDSLabel "AcquiredDate" .
+	lc:acquiredFrom hasNUDSLabel "AcquiredFrom" .
+      SaleCatalog
+	lc:acquiredID hasNUDSLabel "SaleItem" .
+	lc:acquiredPrice hasNUDSLabel "SalePrice" .
+
+Collections Management
+
+lc:hasEstimate lc:hasNUDSLabel "Value"
+comment TODO: creare un oggetto "Estimate", che abbia le proprietà di cui sotto:
+lc:hasEstimateSource lc:hasNUDSLabel "ValueBy"
+lc:hasEstimateDate lc:hasNUDSLabel "ValueDate"
+
+
+      lc:hasCurrentLocation "CurrentLocation"
+      "OnDisplay"
+      "DisplayInstitution"
+      "DisplayLocation"
+      "DisplayLabel"
+      "Repository" - Current location of the object
+lc:hasOwner "Owner"
+      "Acknowledgment"
+
+Copyright, Rights and Licence
+
+      CopyrightHolder - who holds the copyright to the information in this record
+      CopyrightDate
+      rightsStatement
+
+Record Metadata
+
+      TypeOfRecord - Allows distinction between description of an actual object or an idealized description of a numismatic type.
+      RecordHistory
+      DateRecordCreateed
+      DateRecordUpdated
+      CreatedBy
+      UpdatedBy
+      Language
+      SourceUrl - A url for the source of the information
+
+
+
+
+

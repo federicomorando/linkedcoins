@@ -1,0 +1,171 @@
+:LinkedCoins a void:Dataset;
+    foaf:homepage <http://linkedcoins.org/>;
+    foaf:page <http://ckan.net/package/linkedcoins>;
+    foaf:page <http://linkedcoins.org/downloads>;
+    dcterms:title "LinkedCoins";
+    dcterms:description "RDF data from the LinkedCoins.org project";
+    dcterms:contributor :FedericoMorando;
+    dcterms:contributor :MicheleBarbera;
+    dcterms:contributor :LinkedCoinsCommunity;
+    dcterms:source <http://dbpedia.org/resource/Wikipedia>;
+    dcterms:created "2012-08-15"^^xsd:date;
+    dcterms:issued "2012-08-15"^^xsd:date;
+    dcterms:modified "2012-08-15"^^xsd:date;
+    dcterms:subject <http://dbpedia.org/resource/Numismatics>;
+    void:sparqlEndpoint <http://linkedcoins.org/sparql>;
+    .
+dcterms:creator :LinkeCoinsProject
+dcterms:publisher  :LinkeCoinsProject
+dcterms:source 	A related resource from which the dataset is derived. The source should be described as an RDF resource, rather than as a literal.
+
+:LinkedCoins-DBpedia a void:Linkset .
+
+:Example a void:Dataset ;
+    dcterms:license <http://www.opendatacommons.org/odc-public-domain-dedication-and-licence/>;
+    wv:norms <http://www.opendatacommons.org/norms/odc-by-sa/>;
+    wv:waiver """To the extent possible under law, The Example Organisation has waived all
+          copyright and related or neighboring rights to The Example Dataset.""";
+    .
+
+
+:DBpedia a void:Dataset;
+    void:feature <http://www.w3.org/ns/formats/RDF_XML>;
+    .
+http://www.w3.org/ns/formats/N3 	Notation3 (N3): A readable RDF syntax: W3C Team Submission 14 January 2008
+http://www.w3.org/ns/formats/N-Triples 	N-Triples (in RDF Test Cases: W3C Recommendation 10 February 2004)
+http://www.w3.org/ns/formats/RDF_XML 	RDF/XML Syntax Specification: W3C Recommendation 10 February 2004
+http://www.w3.org/ns/formats/RDFa 	RDFa in XHTML: Syntax and Processing: W3C Recommendation 14 October 2008
+http://www.w3.org/ns/formats/Turtle 	Turtle - Terse RDF Triple Language: W3C Team Submission 14 January 2008
+
+
+
+VEDERE: http://www.w3.org/TR/sparql11-service-description/
+
+
+
+    void:exampleResource <http://ids.linkedcoins.org/resource/Caesar> ; 
+    void:exampleResource <http://ids.linkedcoins.org/resource/Ticinum> ;
+    void:exampleResource <http://ids.linkedcoins.org/resource/CohenTrajanus3> ;
+
+    void:uriSpace "http://ids.linkedcoins.org/resource/";
+
+    void:vocabulary <http://ids.linkedcoins.org/ontology/>;
+
+
+    void:dataDump <http://linkedcoins.org/references.rdf>;
+    void:dataDump <http://linkedcoins.org/specimens.rdf>;
+    void:dataDump <http://linkedcoins.org/hoards.rdf>;
+
+
+    void:subset :DBpedia_shortabstracts;
+    void:subset :DBpedia_infoboxes;
+
+:DBpedia_shortabstracts a void:Dataset;
+    dcterms:title "DBpedia Short Abstracts";
+    dcterms:description "Short Abstracts (max. 500 chars long) of Wikipedia Articles";
+    void:dataDump <http://downloads.dbpedia.org/3.3/en/shortabstract_en.nt.bz2>;
+    .
+:DBpedia_infoboxes a void:Dataset;
+    dcterms:title "DBpedia Infoboxes";
+    dcterms:description "Information that has been extracted from Wikipedia infoboxes.";
+    void:dataDump <http://downloads.dbpedia.org/3.3/en/infobox_en.nt.bz2>;
+    .
+
+    Parts have different provenance (different dcterms:source)
+    Parts have different publication dates (different dcterms:date)
+    Parts are accesible through different SPARQL endpoints (different void:sparqlEndpoint)
+    Parts are about different topics (different dcterms:subject)
+    Parts can be downloaded separately in different RDF dumps (different void:dataDump)
+
+
+:MyDataset a void:Dataset;
+    void:classPartition [ void:class foaf:Person; ];
+    void:classPartition [ void:class foaf:Organization; ];
+    void:propertyPartition [ void:property foaf:name; ];
+    void:propertyPartition [ void:property foaf:member; ];
+    void:propertyPartition [ void:property foaf:homepage; ];
+    void:propertyPartition [ void:property rdf:type; ];
+    .
+
+
+:DBpedia a void:Dataset;
+    void:classPartition [
+        void:class foaf:Person;
+        void:entities 312000;
+    ];
+    void:propertyPartition [ 
+        void:property foaf:name;
+        void:triples 312000;
+    ];
+    .
+
+
+:DBpedia_Geonames a void:Linkset;
+    void:target :DBpedia;
+    void:target :Geonames;
+    .
+
+
+# see options for publishing a VoID description
+
+http://linkedcoins.org/void.ttl#LinkedCoins
+    Using the root URI of the site, such as http://example.com/, as the dataset URI, and serving both HTML and an RDF format via content negotiation from that URI (see Cool URIs for the Semantic Web [COOL] for a more detailed description of this publishing approach).
+    Embedding the VoID description as HTML+RDFa markup [RDFA] into the homepage of the dataset, with a local “hash URI” for the dataset, yielding a dataset URI such as http://example.com/#MyDataset
+
+
+An example metadata block is shown below. Note the use of an empty-string relative URI (<>) as a syntactic shortcut. In Turtle and RDF/XML, the empty string URI stands for the URI of the document that contains the statements.
+
+<> a void:DatasetDescription;
+    dcterms:title "A VoID Description of the DBpedia Dataset";
+    dcterms:creator <http://richard.cyganiak.de/foaf.rdf#cygri>;
+    foaf:primaryTopic :DBpedia;
+    .
+
+
+A VoID backlink is a triple that points from an RDF document URI to a void:Dataset URI using the void:inDataset property:
+
+<http://dbpedia.org/data/Berlin> void:inDataset :DBpedia .
+
+
+
+
+<#service> a sd:Service;
+    sd:url <http://example.org/geopedia/sparql>;
+    sd:defaultDatasetDescription [
+        a sd:Dataset;
+        dcterms:title "GeoPedia";
+        dcterms:description "A mirror of DBpedia and Geonames";
+        void:triples 1100000100; 
+        sd:defaultGraph [
+            a sd:Graph, void:Dataset;
+            dcterms:title "GeoPedia SPARQL Endpoint Description";
+            dcterms:description "Contains a copy of this SD+VoID file!";
+            void:triples 100;
+        ];
+        sd:namedGraph [
+            sd:name <http://dbpedia.org/>;
+            sd:graph [
+                a sd:Graph, void:Dataset;
+                dcterms:title "DBpedia";
+                foaf:homepage <http://dbpedia.org/>;
+                void:triples 1000000000; 
+            ];
+        ];
+        sd:namedGraph [
+            sd:name <http://geonames.org/>;
+            sd:graph [
+                a sd:Graph, void:Dataset;
+                dcterms:title "Geonames";
+                foaf:homepage <http://www.geonames.org/ontology/>;
+                void:triples 100000000; 
+            ];
+        ];
+    ];
+    .
+
+
+
+The RFC 5758 [RFC5758] defines a mechanism for reserving 'well-known' URIs on any Web server.
+The URI /.well-known/void on any Web server is registered by this specification for a VoID description of any datasets hosted on that server.
+This URI may be an HTTP redirect to the location of the actual VoID file. The most appropriate HTTP redirect code is 302. Clients accessing this well-known URI MUST handle HTTP redirects.
+
