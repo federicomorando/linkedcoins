@@ -1,0 +1,16 @@
+
+
+
+Hoard a Class.
+isInHard range Hoard;
+domain Coin.
+
+RekaDevnia a Hoard.
+
+?coin isInHoard
+
+CohenNx rdfs:comment "Just for my examples: the general form of classes of Cohen coins of Emperor N, coin number x"
+
+CohenNxInRekaDevnia owl:intersectionOf (RekaDevnia CohenNx)
+
+CohenNxInRekaDevnia equivalentClass [cardinality]
