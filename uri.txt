@@ -1,9 +1,22 @@
-ids.linkedcoins.org/ identifying things and concepts
-data.linkedcoins.org/ serving RDF triples
-pages.linkedcoins.org/ serving HTML pages
+ids.linkedcoins.org/ identifying things and concepts: it redirects to data or pages, depending on user agent;
+data.linkedcoins.org/ serving RDF triples;
+pages.linkedcoins.org/ serving HTML pages.
 
-ids.linkedcoins.org/roman/republic/Babelon/[$GENS]-[#]
-ids.linkedcoins.org/roman/republic/[$GENS]-[#*100]
+ids.linkedcoins.org/ontology/{ClassOrProperty} includes all ontology elements, classes and properties
+ids.linkedcoins.org/resource/{ResourcePublisher}/{ResourceName} includes all the instances of resources
 
 
-Prova di update online
+
+Example:
+ids.linkedcoins.org/ontology/reference/Babelon/[$GENS]-[#]
+ids.linkedcoins.org/ontology/roman/republic/[$GENS]-[#*100]
+
+
+
+ids.linkedcoins.org/ontology/Reference a standard reference/catalogue
+ids.linkedcoins.org/ontology/ReferenceId an identified within a standard reference/catalogue
+ids.linkedcoins.org/ontology/Coin
+ids.linkedcoins.org/ontology/
+
+
+

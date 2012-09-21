@@ -1,61 +1,88 @@
-@prefix batlas: <http://atlantides.org/batlas/> .
-@prefix cc: <http://creativecommons.org/ns#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix gml: <http://www.opengis.net/gml/> .
-@prefix nm: <http://nomisma.org/id/> .
-@prefix ov: <http://open.vocab.org/terms/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2008/05/skos#> .
-@prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix batlas: <http://atlantides.org/batlas/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gml: <http://www.opengis.net/gml/> .
+@prefix ov: <http://open.vocab.org/terms/> .
+@prefix cidoc: <http://www.cidoc-crm.org/rdfs/cidoc-crm> .
+# former link used by coinspj <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl#>
+# http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label
+# http://purl.org/NET/cidoc-crm/core
+@prefix coinspj: <http://www.coins-project.eu/coins_ontology.owl#> .
+# former link <http://www.coins-project.eu/coins_ontology.owl#> has been 404 for a while and it's now used by another project...
+@prefix nm: <http://nomisma.org/id/> .
 @prefix dbpedia: <http://dbpedia.org/resource/> .
 @prefix wikipedia: <http://en.wikipedia.org/wiki/> .
 @prefix lc: <http://www.linkedcoins.org/schema#> .
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+# TO ADD <http://www.heppnetz.de/ontologies/goodrelations/v1> .
 
 
-<http://www.linkedcoins.org/schema#> cc:attributionName "http://www.linkedcoins.org"@en ;
-     cc:attributionURL <http://www.linkedcoins.org> ;
-     dc:title "LinkedCoins.org"@en ;
-     xhv:license <http://creativecommons.org/licenses/by-sa/3.0/> . 
+<http://www.linkedcoins.org/schema#>
+    a owl:Ontology ;
+    rdfs:comment """
+    	This is the ontology created for the LinkedCoins.org project
+	 """^^xsd:string ;
+    rdfs:label """
+	 	Linked Coins Ontology (by Federico Morando - Version 0.1 of 15.08.2012)
+	"""^^xsd:string ;
+    cc:attributionName "http://www.linkedcoins.org"@en ;
+    cc:attributionURL <http://www.linkedcoins.org> ;
+    dc:title "LinkedCoins.org"@en ;
+    xhv:license <http://creativecommons.org/licenses/by-sa/3.0/> . 
+    owl:imports <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc_crm/cidoc_crm_4.2.4_owl_dl.owl> .
 
 nm:augustus a nm:authority, nm:romanemperor, skos:Concept ;
      skos:prefLabel "Augustus"@en ;
      skos:related <http://en.wikipedia.org/wiki/Augustus> . 
 
 
-
-@prefix cidoc: 
-
-http://www.cidoc-crm.org/rdfs/cidoc-crm
-http://www.cidoc-crm.org/rdfs/cidoc-crm-english-label
+E8_Acquisition
 
 
+lc:___robadidata___ rdfs:range cidoc:E52_Time-Span .
 
-lc:coin rdfs:subClassOf cidoc:E22.Man-Made_Object .
-GivenCoin a lc:coin .
-lc:hasReference
-    rdfs:domain lc:coin;
+
+lc:Coin rdfs:subClassOf cidoc:E22.Man-Made_Object .
+# ?coin a lc:Coin .
+lc:hasReferenceID
+    rdfs:domain lc:Coin;
     rdfs:range lc:Reference;
-    rdfs:subPropertyOf  rdf:type .
+    rdfs:subPropertyOf  rdf:type;
+    owl:inverseOf[rdfs:subPropertyOf dc:isReferencedBy] .
+
+
 lc:Reference a rdf:Class
 lc:CohenAugustusXY a Reference .
-GivenCoin lc:hasReference lc:CohenAugustusXY .
+# ?coin lc:hasReference lc:CohenAugustusXY .
 
-GivenCoin    lc:isVariantOf   lc:CohenAugustusXY .
+# ?coin    lc:isVariantOf   lc:CohenAugustusXY .
 lc:isVariantOf   rdfs:isInverseOf   lc:hasVariant .
 
-lc:CohenAugustusXY rdfs:subClassOf lc:AugustusKG .
-lc:RICAugustusXY rdfs:subClassOf lc:AugustusKG .
-lc:CohenAugustusXY rdfs:seeAlso lc:RICAugustusXY .
+lc:CohenAugustus rdfs:subClassOf lc:AugustusCoin .
+lc:RICAugustus rdfs:subClassOf lc:AugustusCoin .
+# depending on the specific case, you can have relationships of the following kinds:
+# lc:CohenAugustusXY owl:sameAs lc:RICAugustusXY .
+# lc:CohenAugustusXY skos:exactMatch lc:RICAugustusXY .
+# lc:CohenAugustusXY skos:closaMatch lc:RICAugustusXY .
+# lc:CohenAugustusXY rdfs:seeAlso lc:RICAugustusXY .
 
-lc:hasReference rdfs:domain lc:IdentifiedCoin
+lc:hasReference rdfs:domain lc:IdentifiedCoin .
+lc:hasReferenceID rdfs:subPropertyOf lc:hasReference .
+lc:hasReferenceID rdfs:domain lc:IdentifiedCoin .
+lc:hasReferenceID rdfs:range lc:IdentifiedCoin .
 
 
-lc:hasReference rdf:comment "Usare per inferenze del tipo: se non è indicata una caratteristica, importarla da qui, come inferredHasObverse, etc."
+lc:hasReference rdf:comment "Usare per inferenze del tipo: se non è indicata una caratteristica, importarla da qui, come inferredHasObverse, etc."@en
+lc:IdentifiedCoin rdf:comment "Class of coins for which there is already a standard identification"@en -
+
 
 
 
@@ -85,10 +112,9 @@ WkgOnto p. 205... copy OGP approach to embedding info...
 20-25 classes and properties
 
 
-
-CohenReference skos:broader RomanCoin
-RomanCoin skos:broader ClassicalCoin
-ClassicalCoin skos:broader Coin
+lc:CohenCoin rdfs:subClassOf lc:RomanCoin
+lc:RomanCoin rdfs:subClassOf lc:ClassicalCoin
+lc:ClassicalCoin rdfs:subClassOf lc:Coin
 
 lc:RIC-IV-Gordian_III-19 skos:closeMatch lc:Cohen-Gordian_III-199
 Come sopra se non verificato...
@@ -98,15 +124,19 @@ Se ci sono varie monete in RIC per quel Cohen, allora
 RIC: skos:closeMatch Cohen:
 
 
-hasInferredObverse subPropertyOf hasObverse ;
+lc:hasInferredObverse rdfs:subPropertyOf lc:hasObverse ;
 	rdfs:comment "the property comes from the fact that a coin has a certain reference; it has not been directly described" .
 
-hasObverseLegend subPropertyOf hasObverse
+lc:hasObverseLegend rdfs:subPropertyOf lc:hasObverse .
+lc:hasReverseLegend rdfs:subPropertyOf lc:hasReverse .
 
-hasObverseType subPropertyOf hasObverse;
+
+lc:hasObverseType rdfs:subPropertyOf lc:hasObverse;
 	rdfs:range rdfs:Resource .
 
-hasObverseDescription subPropertyOf hasObverse;
+lc:hasObverseDescription
+	rdfs:subPropertyOf lc:hasObverse;
+	rdfs:subPropertyOf dc:description;
 	rdfs:range rdfs:Literal;
 	rdfs:range rdf:XMLLiteral .
 
@@ -151,8 +181,8 @@ lc:BustRadCuirR rdfs:label‎ "radiate, cuirassed bust right"@en, ""@it .
 lc:BustRadDrCuirL rdfs:label‎ "radiate, draped and cuirassed bust left"@en, ""@it .
 lc:BustRadDrCuirR rdfs:label‎ "radiate, draped and cuirassed bust right"@en, ""@it .
 lc:BustRadDrL rdfs:label‎ "radiate, draped bust left"@en, ""@it .
-lc:BustRadDrR rdfs:label‎ "radiate, draped bust right"@en, ""@it .
-
+lc:BustRadDrR rdfs:label‎ "radiate, draped bust right"@en, ""@it ;
+	lc:BustRadDrR rdfs:subPropertyOf lc:Bust, lc:Radiate, lc:Draped, lc:Right.
 
 
 Diad "diademed"
@@ -165,22 +195,22 @@ Quad "quadriga"
 R "right"
 Obv "obverse"
 Rev "reverse"
+Rad "radiate" ???
 
 
-lc:PontMax rdfs:label‎ "PONT. MAX"; lc:hasAbbreviationExpansion "" .
-
-
-lc:hasTransliteration
-
-
-lc: rdfs:label‎ ;
-lc:hasAbbreviationExpansion ;
-lc:hasTranslation ;
+lc:PontMax rdfs:label‎ "PONT. MAX";
+	lc:hasAbbreviationExpansion "" ;
+	lc:hasTransliteration "Pontifex Maximus" .
 
 
 lc: rdfs:label‎ ;
 lc:hasAbbreviationExpansion ;
-lc:hasTranslation ;
+lc:hasTranslation .
+
+
+lc: rdfs:label‎ ;
+lc:hasAbbreviationExpansion ;
+lc:hasTranslation .
 
 AVG, AVGVSTVS
 Augustus. The title bestowed on the emperor. (Literally: "Revered One")
@@ -266,15 +296,17 @@ WHERE
 
 
 lc:depicts a rdf:Property
-    rdfs:domain lc:Coin;
+lc:depicts rdfs:subPropertyOf cidoc:P62_depicts
+#    rdfs:domain lc:Coin;
     rdfs:range lc:DepictedOnCoin;
     rdfs:subPropertyOf  lc:hasReference;
-    a owl:FunctionalProperty  .
-lc:depictsOnObverse rdf:subPropertyOf lc:depicts
-lc:depictsOnReverse rdf:subPropertyOf lc:depicts
+#    a owl:FunctionalProperty  .
+lc:depictsOnObverse rdfs:subPropertyOf lc:depicts
+lc:depictsOnReverse rdfs:subPropertyOf lc:depicts
 
-
-
+lc:refersTo QUASI, MA NON PUO' ESSERE PER IL DOMINIO: rdfs:subPropertyOf cidoc:P67_refers_to
+# utile nel caso di riferimento simbolico o indiretto, per esempio se si fa riferimento ad un evento storico o altro... refersTo battaglia di canne...
+# per il link con Cidoc dovrebbe essere una proprietà della rappresentazione sulla moneta, non della moneta...
 
 cidoc:E54.Dimension
 
@@ -303,9 +335,10 @@ seeAlso E52.Time-Span
 
 Authority  cidoc:E40.Legal_Body
 
-Mint rdfs:subClassOf cidoc:E53.Place
-
-hasMint rdf:type rdf:Property
+lc:Mint rdfs:subClassOf cidoc:E53.Place
+lc:hasMint rdf:type rdf:Property;
+	rdfs:domain lc:Coin ;
+	rdfs:range  lc:Mint .
 
 Weight
 
@@ -322,7 +355,7 @@ Diameter rdfs:subClassOf cidoc:E54.Dimension
 
 lc:Legend rdfs:subClassOf cidoc:E34.Inscription
 
-hasLegend rdfs:range lc:Legend
+hasLegend rdfs:range lc:Legend .
 
 Obverse
 cidoc:E46.Section_Definition
@@ -343,7 +376,10 @@ cp:Cataloguing owl:equivalentClass cidoc:E13.Attribute_Assignment
 cidoc:P141.assigned
 cp:Catalogue_number owl:equivalentClass cidoc:E42.Identifier
 
-hasCollectionIdentifier
+hasCollectionIdentifier rdfs:subPropertyOf dc:identifier;
+rdfs:range <http://www.w3.org/2000/01/rdf-schema#Literal> .
+
+
 
 cp:Classification owl:equivalentClass cidoc:E17.Type_Assignment
 cidoc:P42.assigned
@@ -398,12 +434,25 @@ foaf:primaryTopic
 
 
 
+TODO: creare un "evento acquisto" con le sue belle caratteristiche... NUDS Provenience
 
 
 
 
 
 
+lc:hasPreviousOwner ;
+	rdf:comment "Usare per tenere traccia dei precedenti proprietari (inclusi rivenditori professionali)" .
+
+lc:soldBy rdfs:subPropertyOf lc:hasPreviousOwner;
+	rdfs:range lc:Seller.
+
+
+lc:hasRarity
+lc:hasVMRarity rdfs:subPropertyOf lc:hasRarity
+lc:hasCohenRarity rdfs:subPropertyOf lc:hasRarity
+lc:hasRICRarity rdfs:subPropertyOf lc:hasRarity
+(TODO: not so easy, if Rarity points to a resource and the other are textual... need a conversion + labels...)
 
 
 
