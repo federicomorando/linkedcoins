@@ -3,7 +3,7 @@ data.linkedcoins.org/ serving RDF triples;
 pages.linkedcoins.org/ serving HTML pages.
 
 ids.linkedcoins.org/ontology/{ClassOrProperty} includes all ontology elements, classes and properties
-ids.linkedcoins.org/resource/{ResourcePublisher}/{ResourceName} includes all the instances of resources
+ids.linkedcoins.org/resource/{Name} includes all the instances of resources
 
 
 

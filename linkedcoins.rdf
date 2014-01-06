@@ -304,6 +304,8 @@ lc:depicts rdfs:subPropertyOf cidoc:P62_depicts
 lc:depictsOnObverse rdfs:subPropertyOf lc:depicts
 lc:depictsOnReverse rdfs:subPropertyOf lc:depicts
 
+# considerare anche foaf:depicts inverso di foaf:depiction
+
 lc:refersTo QUASI, MA NON PUO' ESSERE PER IL DOMINIO: rdfs:subPropertyOf cidoc:P67_refers_to
 # utile nel caso di riferimento simbolico o indiretto, per esempio se si fa riferimento ad un evento storico o altro... refersTo battaglia di canne...
 # per il link con Cidoc dovrebbe essere una proprietà della rappresentazione sulla moneta, non della moneta...
@@ -361,7 +363,6 @@ Obverse
 cidoc:E46.Section_Definition
 
 
-foaf:depiction
 
 
 lc:Acquisition owl:equivalentClass cidoc:Acquisition
